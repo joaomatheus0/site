@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+:root {
+  --white: #FFF;
+  --whitesmoke: #F9F9F9;
+  --light-grey: #ECECEC;
+  --grey: #C4C4C4;
+  --medium-grey: #A7A7A7;
+  --deep-grey: #343434;
+  --black: #000000;
+  --blue: #1B77F3;
+  --red: #CF3C3F;
+}
+
+
+main{
+  height: 100vh;
+  background-image: url('/static/img/Vector_2646.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 25%;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(9px);
+  border-radius: 21px;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Verificar*/
+.login__label {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  outline: none;
+  font-size: 0.9em;
+  padding: 25px 10px 10px;
+  font-weight: 600;
+  color: rgba(22, 17, 57, 0.33);
+}
+
+.login__label span {
+  position: absolute;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #5F5454;
+  margin: 20px;
+  cursor: text;
+  transition: all 200ms ease;
+}
+
+.input:focus {
+  background-color: white;
+  border: 2px solid rgba(22, 17, 57, 0.33);
+}
+
+.login__label .span-active {
+  font-size: 0.7em;
+  margin: 8px 10px;
+}
+
+
+.wallpaper {
+  width: 100%;
+  background-image: url('./images/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+}
+
+.button{
+    width: 126px;
+    height: 32px;
+    color: #5F5454;
+    font-family: 'Montserrat';
+    font-style: normal;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 0.6px solid #5F5454;
+    box-shadow: 4px 4px 11px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    margin-top: 32px;
+    font-weight: 700;
+    font-size: 16px;
+}

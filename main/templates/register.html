@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <title>Document</title>
+
+</head>
+<body>
+    <main>
+
+        {% if bol == False %}
+            <a data-popup="true" href="" data-content="Uma simples definição ou texto" data-size="sm" data-quickclose="true">
+                {{msg}}
+            </a>
+        {% endif%}
+
+        <section class="register">
+        <form action="{% url 'register' %}" method="POST" autocomplete="off" class="form-signin">
+            {% csrf_token %}
+            <div class="wrapper">
+                <label class="login__label">
+                    <span>Nome Completo</span>
+                    <input type="text" name="username" class="input" value="{{request.POST.nome}}" class="form-control" required>
+                </label>
+            </div>
+            <div class="wrapper">
+                <label class="login__label">
+                    <span>E-mail</span>
+                    <input type="email" name="email" class="input" value="{{request.POST.email}}" class="form-control" required>
+                </label>
+            </div>
+            <div class="wrapper">
+                <label class="login__label">
+                    <span>Telefone</span>
+                    <input type="tel" name="phone" class="input" value="{{request.POST.telefone}}" class="form-control" maxlength="15" id="telefone" name="telefone" onkeyup="handlePhone(event)" required>
+                </label>
+            </div>
+            <div class="wrapper">
+                <label class="login__label">
+                    <span>Senha</span>
+                    <input type="password" name="password" class="input" value="{{request.POST.password}}" class="form-control" required>
+                </label>
+            </div>
+            <div class="wrapper">
+                <label class="login__label">
+                    <span>Digite a senha novamente</span>
+                    <input type="password" name="password1" class="input" value="{{request.POST.password1}}" class="form-control" required>
+                </label>
+            </div>
+
+            <button class="button" type="submit">Registrar</button>
+        </form>
+        </section>
+    </main>
+</body>
+
+<script src="{% static 'js/script.js'%}"></script>
+<script src="{% static 'js/phone.js'%}"></script>
+</html>
