@@ -46,3 +46,8 @@ class Account(AbstractUser):
         return self.email
     
     objects = UsuarioManager()
+
+class SocialAccount():
+    login = models.CharField('login', max_length=200, blank=False)
+    password = models.CharField('Password', max_length=500, blank=False)
+    social_network = models.CharField('Network', max_length=100, blank=False)
