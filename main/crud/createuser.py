@@ -1,6 +1,5 @@
-from ..models import Account
+from ..models import Account, SocialAccount
 import re
-from passlib.hash import pbkdf2_sha256
 from django.contrib.auth.hashers import make_password
 
 class CreateUser():
@@ -25,7 +24,8 @@ class CreateUser():
             if not re.search("[_@$]", password):
                 return False, "A senha não atende a todos os requisitos6"
 
-            p = make_password(password, salt="64")
+            #Decobrir o valor do salt do hash argon2
+            p = make_password(password, salt="")
 
             user = Account.objects.create(
                 email = email,
@@ -44,3 +44,12 @@ class CreateUser():
             return verification
         else:
             return verification
+
+class Socialuser():
+    def user(login, password, social_network):
+        socialuser = Socialuser.objects.create(
+            login = login,
+            password = password,
+            social_network = social_network,
+        )
+        socialuser.save()

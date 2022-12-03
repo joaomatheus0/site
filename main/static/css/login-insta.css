@@ -1,0 +1,66 @@
+.login-insta{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    background-color: #FAFBFC;  
+    height: 85%;
+    padding-top: 32px;
+    padding-left: 32px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 530px;
+    width: 330px;
+    padding: 16px;
+    border: solid 0.6px #dcdfe1;
+    border-radius: 20px;
+    box-shadow: 8px 8px 16px #d4d6da33;
+    align-items: center;
+}
+
+.login input{
+    border-radius: 16px;
+    border: none;
+    background-color: #f9fafb;
+    height: 60px;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+.login img{
+    max-width: 64px;
+    max-height: 64px;
+    margin-top: 24px;
+    margin-bottom: 64px;
+}
+
+.login button{
+    margin-top: 32px;
+    cursor: pointer;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    border: solid 0.6px #d4d6dab3;
+    border-radius: 20px;
+}
+
+.login button:hover{
+    box-shadow: 8px 8px 16px #71717233;
+}
+
+.login form{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 100%;
+}

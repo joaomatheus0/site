@@ -4,9 +4,9 @@ from .models import Account
 from .crud import createuser
 from passlib.hash import pbkdf2_sha256
 from .crud import createuser
+from .crud import c
 from django.contrib import auth
 from django.contrib.auth import login, authenticate, logout
-
 
 def index(request):
     if request.method != "POST":
@@ -57,10 +57,27 @@ def dashboard(request):
     if request.method != "POST":
         return render(request, 'dashboard.html')
 
+    # Caso o usuário não utilize o sistma será deslogado em 20 minutos
+    if request.session.set_expiry(1200):
+        return redirect("index")
+
     return render(request, 'dashboard.html')
 
-def logoutx(request):
+@login_required(login_url='index')
+def out(request):
     if request.method == 'POST':
         logout(request)
         return redirect("index")
-      
+
+@login_required(login_url='index')
+def settings(request):        
+    return render(request, 'settings.html')
+
+@login_required(login_url='index')
+def add_insta(request):
+    if request.method == "POST":
+        username = request.POST["login"]
+        password = request.POST["password"]
+        
+        createuser.Socialuser.user(username, password, social_network = "Instagram")
+    return render(request, 'addinsta.html')

@@ -1,63 +1,38 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    
-    <main>
-        {% if request.user.is_authenticated %}
-            <!-- Leva pa logoutx-->
-            <!-- <button type="submit" onclick="location.href='{% url 'logout' %}'">Logout</button>-->
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" name='mybtn2' value="true">Logout</button>
-            </form>      
-        {% endif %}
-        <div class="menu">
-            <div class="menu-icon">
-                <img src="{% static 'img/instagram (2).png' %}" width="32px" height="32px" alt="">
-            </div>
-        </div>
-    
-        <div class="dashboard">
-            <div class="contas">
-                <div class="account">
-                    <h3>Nome Empresa</h3>
-                </div>
 
-                <div class="account">
-                    <h3>Nome Empresa</h3>
-                </div>
+{%block title%}Dashboard{%endblock%}
+
+{%block conteudo%}
+<div class="area">
+    <div class="contas">
+        <div class="title">
+            <div>
+                <h4>Instagram</h4>
+                <p>Nome da conta Instagram</p>
             </div>
-            <div class="table">
-                <table id="customers">
-                    <tr>
-                      <th>ID</th>
-                      <th>Imagem</th>
-                      <th>Descrição</th>
-                      <th>Data</th>
-                    </tr>
-                    <tr>
-                      <td>Alfreds Futterkiste</td>
-                      <td>Maria Anders</td>
-                      <td>Germany</td>
-                    </tr>
-                    
-                  </table>
-                  <form method="POST">
-                    {% csrf_token%}
-                    <input type="text">
-                    <button type="submit">Enviar</button>
-                  </form>
+            <select id="cars" name="cars">
+                <option value="volvo">en-US</option>
+                <option value="saab">pt-BR</option>
+            </select>
+        </div>
+        <div class="option">
+            <div class="op">
+                <img src="{% static 'icon/upload.png' %}" alt="">
+                <h3>Publicações</h3>
+                <p>Total: 5680</p>
+            </div>
+            <div class="op">
+                <img src="{% static 'icon/seguidor.png' %}" alt="">
+                <h3>Seguidores</h3>
+                <p>Total: 89</p>
+            </div>
+            <div class="op">
+                <img src="{% static 'icon/plus.png' %}" alt="">
+                <h3>Adicionar</h3>
+                <p>Foto, vídeo, reels ...</p>
             </div>
         </div>
-    </main>
-    
-</body>
-</html>
+    </div>
+</div>
+{%endblock%}

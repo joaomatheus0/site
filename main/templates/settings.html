@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%} Settings {% endblock %}
+   
+{%block conteudo%}
+<div class="area">
+    <div class="contas">
+        <div class="title">
+            <div>
+                <h4>Adicionar Conta</h4>
+            </div>
+            <select id="cars" name="cars">
+                <option value="volvo">en-US</option>
+                <option value="saab">pt-BR</option>
+            </select>
+        </div>
+        <a href="{% url 'addinsta' %}">
+            <div class="op">
+                Instagram
+            </div>
+        </a>    
+    </div>
+</div>
+
+{%endblock%}
