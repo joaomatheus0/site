@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Account
+from .models import Account, SocialAccount
 from .crud import createuser
-from passlib.hash import pbkdf2_sha256
 from .crud import createuser
-from .crud import c
 from django.contrib import auth
 from django.contrib.auth import login, authenticate, logout
+from .instagram import instagram
 
 def index(request):
     if request.method != "POST":
@@ -54,12 +53,26 @@ def register(request):
 
 @login_required(login_url='index')
 def dashboard(request):
-    if request.method != "POST":
-        return render(request, 'dashboard.html')
+    conta = []
+    insta = SocialAccount.objects.all()
+
+    # Verifica todas as contas de instagram que tem e coloca em uma lista
+    for i in insta:
+        if i.account.all().get() == request.user:
+            conta.append(str(i))
+
+    if request.method != "POST":        
+        return render(request, 'dashboard.html', {
+            'insta': insta,
+            'conta': conta
+            }
+        )
+
+    #ASDASDASDAS
 
     # Caso o usuário não utilize o sistma será deslogado em 20 minutos
     if request.session.set_expiry(1200):
-        return redirect("index")
+        return redirect("index")        
 
     return render(request, 'dashboard.html')
 
@@ -78,6 +91,14 @@ def add_insta(request):
     if request.method == "POST":
         username = request.POST["login"]
         password = request.POST["password"]
+        account = request.user
         
-        createuser.Socialuser.user(username, password, social_network = "Instagram")
+        # Realizar uma verificação e tratamento do contas não validas.
+        if instagram.Login.validation_login(username, password):
+            createuser.Socialuser.user_instagram(username, password, social_network = "Instagram", account=account)
+            return redirect('dashboard')
+        else:
+            return redirect('addinsta')
+        
+
     return render(request, 'addinsta.html')

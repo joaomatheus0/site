@@ -9,12 +9,12 @@
         <div class="title">
             <div>
                 <h4>Instagram</h4>
-                <p>Nome da conta Instagram</p>
+                <select id="cars" name="cars">
+                    {% for i in conta %}
+                        <option value="volvo" name="account_insta">{{ i }} </option>
+                    {% endfor %}    
+                </select>
             </div>
-            <select id="cars" name="cars">
-                <option value="volvo">en-US</option>
-                <option value="saab">pt-BR</option>
-            </select>
         </div>
         <div class="option">
             <div class="op">
@@ -27,11 +27,13 @@
                 <h3>Seguidores</h3>
                 <p>Total: 89</p>
             </div>
-            <div class="op">
-                <img src="{% static 'icon/plus.png' %}" alt="">
-                <h3>Adicionar</h3>
-                <p>Foto, vídeo, reels ...</p>
-            </div>
+            <button type="submit">
+                <div class="op">
+                    <img src="{% static 'icon/plus.png' %}" alt="">
+                    <h3>Adicionar</h3>
+                    <p>Foto, vídeo, reels ...</p>
+                </div>
+            </button>
         </div>
     </div>
 </div>

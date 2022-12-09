@@ -46,6 +46,7 @@
     <section class="right">
         <div class="top-bar">
             <h2>Dashboard</h2>
+            
             <input type="search" placeholder="Search here...">
             
             <div class="contry">
@@ -58,7 +59,7 @@
             <div class="profile">
                 <img src="{% static 'icon/user.png' %}" alt="">
                 <div>
-                    <h4>João Matheus</h4>
+                    <h4>{{ request.user.nome }}</h4>
                     <p>Admin</p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
@@ -47,7 +47,14 @@ class Account(AbstractUser):
     
     objects = UsuarioManager()
 
-class SocialAccount():
+class SocialAccount(models.Model):
     login = models.CharField('login', max_length=200, blank=False)
     password = models.CharField('Password', max_length=500, blank=False)
     social_network = models.CharField('Network', max_length=100, blank=False)
+    account = models.ManyToManyField('Account', related_name='socialaccount')
+
+    class Meta:
+        ordering = ['social_network']
+
+    def __str__(self):
+        return self.login

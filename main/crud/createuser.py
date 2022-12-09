@@ -32,7 +32,8 @@ class CreateUser():
                 password = p,
                 nome = name, 
                 telefone = phone,
-                is_trusty = is_trusty
+                is_trusty = is_trusty,
+                username = email
             )
             user.save()
 
@@ -46,10 +47,13 @@ class CreateUser():
             return verification
 
 class Socialuser():
-    def user(login, password, social_network):
-        socialuser = Socialuser.objects.create(
+    def user_instagram(login, password, social_network, account):
+        
+        socialuser = SocialAccount.objects.create(
             login = login,
             password = password,
             social_network = social_network,
         )
+
+        socialuser.account.add(account)
         socialuser.save()

@@ -12,8 +12,8 @@
         <img src="{% static 'img/instagram-login.png' %}" alt="">
         <form action="{% url 'addinsta' %}" method="post" autocomplete="off">
             {% csrf_token %}
-            <input type="text" name='login' placeholder="Telefone, nome de usuário ou email">
-            <input type="password" name="password" id="" placeholder="Senha">
+            <input type="text" name='login' placeholder="Telefone, nome de usuário ou email" required>
+            <input type="password" name="password" id="" placeholder="Senha" required>
             <button type="submit">Configurar</button>
         </form>      
     </div>
